@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import urn.client.Config;
 import urn.client.util.Validator;
 import urn.client.view.AlertBox;
-import urn.client.view.LoginScene;
+import urn.client.view.RegisterScene;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,23 +14,27 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class RegisterController {
-    private String TITLE = "Login";
-    private LoginScene loginScene;
+    private String TITLE = "Registro";
+    private RegisterScene registerScene;
 
-    public RegisterController() {
-        loginScene = new LoginScene(Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT);
+    public RegisterController(ChangeSceneListener window) {
+        registerScene = new RegisterScene(Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT);
 
-        loginScene.getSignInBtn().setOnAction(e -> {
-            if (Validator.isValidCPF(loginScene.getCpfInput().getText())) {
+        registerScene.getSignInBtn().setOnAction(e -> {
+            if (Validator.isValidCPF(registerScene.getCpfInput().getText())) {
                 sendLoginInfo();
             } else {
                 AlertBox.display("Erro", "CPF inválido");
             }
         });
+
+        registerScene.getBackBtn().setOnAction(e -> {
+            window.goToLoginScene();
+        });
     }
 
     public Scene getScene() {
-        return loginScene.getScene();
+        return registerScene.getScene();
     }
 
     public String getTitle() {

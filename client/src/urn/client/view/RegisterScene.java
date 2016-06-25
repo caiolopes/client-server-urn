@@ -1,16 +1,18 @@
 package urn.client.view;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import urn.client.util.Validator;
 
 /**
- * Tela de login
+ * Tela de cadastro de um novo usuário
  */
 public class RegisterScene {
     private Scene scene;
@@ -19,6 +21,7 @@ public class RegisterScene {
     private TextField passInput;
     private TextField passAgainInput;
     private Button signInBtn;
+    private Button backBtn;
 
     public RegisterScene(int width, int height) {
         GridPane grid = new GridPane();
@@ -57,23 +60,28 @@ public class RegisterScene {
         GridPane.setConstraints(passLabel, 0, 2);
 
         // Password input
-        passInput = new TextField();
+        passInput = new PasswordField();
         passInput.setPromptText("Senha");
         GridPane.setConstraints(passInput, 1, 2);
 
         // Password again label
         Label passAgainLabel = new Label("Senha de novo:");
-        GridPane.setConstraints(passLabel, 0, 3);
+        GridPane.setConstraints(passAgainLabel, 0, 3);
 
         // Password again input
-        passInput = new TextField();
-        passInput.setPromptText("Senha de novo");
-        GridPane.setConstraints(passInput, 1, 3);
+        passAgainInput = new PasswordField();
+        passAgainInput.setPromptText("Senha de novo");
+        GridPane.setConstraints(passAgainInput, 1, 3);
 
-        signInBtn = new Button("Entrar");
+        signInBtn = new Button("Cadastrar");
+        GridPane.setHalignment(signInBtn, HPos.CENTER);
         GridPane.setConstraints(signInBtn, 1, 4);
 
-        grid.getChildren().addAll(nameLabel, nameInput, cpfLabel, cpfInput, passLabel, passAgainLabel, passAgainInput, passInput, signInBtn);
+        backBtn = new Button("Voltar");
+        GridPane.setHalignment(backBtn, HPos.CENTER);
+        GridPane.setConstraints(backBtn, 1, 7);
+
+        grid.getChildren().addAll(nameLabel, nameInput, cpfLabel, cpfInput, passLabel, passAgainLabel, passAgainInput, passInput, signInBtn, backBtn);
 
         scene = new Scene(grid, width, height);
     }
@@ -100,5 +108,9 @@ public class RegisterScene {
 
     public Button getSignInBtn() {
         return signInBtn;
+    }
+
+    public Button getBackBtn() {
+        return backBtn;
     }
 }

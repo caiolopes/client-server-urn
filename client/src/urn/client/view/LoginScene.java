@@ -5,8 +5,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import urn.client.util.Validator;
 
 /**
@@ -17,6 +20,7 @@ public class LoginScene {
     private TextField cpfInput;
     private TextField passInput;
     private Button signInBtn;
+    private TextFlow registerText;
 
     public LoginScene(int width, int height) {
         GridPane grid = new GridPane();
@@ -47,14 +51,23 @@ public class LoginScene {
         GridPane.setConstraints(passLabel, 0, 1);
 
         // Password Input
-        passInput = new TextField();
+        passInput = new PasswordField();
         passInput.setPromptText("Senha");
         GridPane.setConstraints(passInput, 1, 1);
 
         signInBtn = new Button("Entrar");
         GridPane.setConstraints(signInBtn, 1, 2);
 
-        grid.getChildren().addAll(cpfLabel, cpfInput, passLabel, passInput, signInBtn);
+        registerText = new TextFlow();
+
+        Text registerText1 = new Text("Não é usuário ainda? ");
+        Text registerText2 = new Text("Cadastre-se");
+        registerText2.setStyle("-fx-font-weight: bold;");
+
+        registerText.getChildren().addAll(registerText1, registerText2);
+        GridPane.setConstraints(registerText, 1, 3);
+
+        grid.getChildren().addAll(cpfLabel, cpfInput, passLabel, passInput, signInBtn, registerText);
 
         scene = new Scene(grid, width, height);
     }
@@ -73,5 +86,9 @@ public class LoginScene {
 
     public Button getSignInBtn() {
         return signInBtn;
+    }
+
+    public TextFlow getRegisterText() {
+        return registerText;
     }
 }

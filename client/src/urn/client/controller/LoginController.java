@@ -17,7 +17,7 @@ public class LoginController {
     private String TITLE = "Login";
     private LoginScene loginScene;
 
-    public LoginController() {
+    public LoginController(ChangeSceneListener window) {
         loginScene = new LoginScene(Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT);
 
         loginScene.getSignInBtn().setOnAction(e -> {
@@ -26,6 +26,10 @@ public class LoginController {
             } else {
                 AlertBox.display("Erro", "CPF inválido");
             }
+        });
+
+        loginScene.getRegisterText().setOnMouseClicked(e -> {
+            window.goToRegisterScene();
         });
     }
 
