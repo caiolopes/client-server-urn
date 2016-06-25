@@ -1,10 +1,18 @@
-package urn.client.controller;
+package client.controller;
 
+import client.Config;
+import client.util.Validator;
+import client.view.AlertBox;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import urn.client.Config;
-import urn.client.util.Validator;
-import urn.client.view.AlertBox;
-import urn.client.view.RegisterScene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,32 +21,25 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class RegisterController {
-    private String TITLE = "Registro";
-    private RegisterScene registerScene;
+public class LoginController {
+    public static String TITLE = "Entrar";
+    @FXML private TextField cpfInput;
+    @FXML private TextField passwordInput;
+    @FXML private Button signInBtn;
+    @FXML private TextFlow registerText;
 
-    public RegisterController(ChangeSceneListener window) {
-        registerScene = new RegisterScene(Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT);
-
-        registerScene.getSignInBtn().setOnAction(e -> {
-            if (Validator.isValidCPF(registerScene.getCpfInput().getText())) {
-                sendLoginInfo();
-            } else {
-                AlertBox.display("Erro", "CPF inválido");
-            }
-        });
-
-        registerScene.getBackBtn().setOnAction(e -> {
-            window.goToLoginScene();
-        });
+    @FXML protected void handleSignIn(ActionEvent event) {
+        if (Validator.isValidCPF(cpfInput.getText())) {
+            sendLoginInfo();
+        } else {
+            AlertBox.display("Erro", "CPF inválido");
+        }
     }
 
-    public Scene getScene() {
-        return registerScene.getScene();
-    }
-
-    public String getTitle() {
-        return TITLE;
+    @FXML protected void goToRegisterScene(Event event) throws IOException {
+        Stage window = (Stage) registerText.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("/register.fxml"));
+        window.setScene(new Scene(root, Config.DEFAULT_WIDTH, Config.DEFAULT_HEIGHT));
     }
 
     private void sendLoginInfo() {

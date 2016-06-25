@@ -1,4 +1,4 @@
-package urn.client.util;
+package client.util;
 
 public class Network {
 }

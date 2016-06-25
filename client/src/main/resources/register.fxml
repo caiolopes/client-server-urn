@@ -1,0 +1,38 @@
+<?import client.Config?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane
+        xmlns:fx="http://javafx.com/fxml"
+        alignment="CENTER"
+        hgap="10"
+        vgap="10"
+        fx:controller="client.controller.RegisterController">
+    <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+    <prefWidth>
+        <Config fx:constant="DEFAULT_WIDTH" />
+    </prefWidth>
+    <prefHeight>
+        <Config fx:constant="DEFAULT_HEIGHT" />
+    </prefHeight>
+
+    <Label text="Nome: " GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+    <TextField promptText="Nome" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="nameInput"/>
+
+    <Label text="CPF: " GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+    <TextField promptText="CPF" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="cpfInput"/>
+
+    <Label text="Senha: " GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+    <TextField promptText="Senha" GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="passwordInput"/>
+
+    <Label text="Senha de novo: " GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+    <TextField promptText="Senha de novo" GridPane.columnIndex="1" GridPane.rowIndex="3" fx:id="passwordAgainInput"/>
+
+    <Button text="Cadastrar" GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="signInBtn" onAction="#handleRegister"/>
+
+    <Button text="Voltar" GridPane.columnIndex="1" GridPane.rowIndex="7" fx:id="backBtn" onAction="#handleBack"/>
+</GridPane>

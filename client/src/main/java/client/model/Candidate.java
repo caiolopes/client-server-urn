@@ -1,4 +1,4 @@
-package urn.client.model;
+package client.model;
 
 /**
  * Classe que representa um candidato possível de votar através da aplicação cliente

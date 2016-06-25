@@ -1,4 +1,4 @@
-package urn.client.view;
+package client.view;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
