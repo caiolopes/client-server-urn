@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class ConfirmBox {
     static boolean answer = true;
 
-    public static boolean display(String title, String message) {
+    public static boolean display(String title, String message, double width, double height) {
         Stage window = new Stage();
 
         window.initModality(Modality.APPLICATION_MODAL);
@@ -41,7 +41,7 @@ public class ConfirmBox {
         layout.getChildren().addAll(label, buttons);
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(layout, 200, 200);
+        Scene scene = new Scene(layout, width, height);
         window.setScene(scene);
         window.showAndWait();
 

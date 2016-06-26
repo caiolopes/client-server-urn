@@ -25,7 +25,7 @@ public class MainController {
 
     @FXML protected void confirmVote() {
         String[] arr = listView.getSelectionModel().getSelectedItems().get(0).split(" - ");
-        ConfirmBox.display("Votar", "Confirma votar em " + arr[1] + " do " + arr[0] + "?");
+        ConfirmBox.display("Votar", "Confirma votar em " + arr[1] + " do " + arr[0] + "?", 400, 300);
     }
 
     public void loadCandidates(ActionEvent event) {
