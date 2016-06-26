@@ -67,7 +67,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="sendBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#sendAndFinish" text="Enviar tudo e terminar" textAlignment="CENTER">
+                  <Button fx:id="sendBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#sendAndFinish" text="Enviar tudo e terminar" textAlignment="CENTER" disable="true">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

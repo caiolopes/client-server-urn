@@ -39,4 +39,27 @@ public class Network {
 
         return candidates;
     }
+
+    public List<Candidate> sendVotes(List<Candidate> candidates, Integer nullVotes, Integer whiteVotes) {
+        try {
+            Socket urnSocket = new Socket(Config.HOST, Config.PORT);
+            PrintWriter out = new PrintWriter(urnSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(urnSocket.getInputStream()));
+
+            out.println(888);
+            out.flush();
+            out.println(nullVotes);
+            out.println(whiteVotes);
+            Gson gson = new Gson();
+            out.println(gson.toJson(candidates));
+        } catch (UnknownHostException e) {
+            System.err.println("Don't know about host");
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println("Couldn't get I/O for the connection to the host");
+            System.exit(1);
+        }
+
+        return candidates;
+    }
 }
