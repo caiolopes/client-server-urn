@@ -1,4 +1,4 @@
-package client;
+package urn.client;
 
 public class Config {
     public static final double DEFAULT_WIDTH = 700;

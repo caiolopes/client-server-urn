@@ -3,10 +3,7 @@ package urn.server;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class CandidatesThread extends Thread {
     private Socket socket = null;
@@ -27,12 +24,7 @@ public class CandidatesThread extends Thread {
     }
 
     private String getCandidates() {
-        byte[] encoded = new byte[0];
-        try {
-            encoded = Files.readAllBytes(Paths.get(getClass().getResource("/candidates.json").toURI()));
-        } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return new String(encoded, Charset.defaultCharset());
+        Scanner s = new java.util.Scanner(Server.class.getResourceAsStream("/candidates.json")).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
     }
 }

@@ -1,7 +1,7 @@
-package client.util;
+package urn.client.util;
 
-import client.Config;
-import client.model.Candidate;
+import urn.client.Config;
+import urn.client.model.Candidate;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

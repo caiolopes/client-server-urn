@@ -1,8 +1,8 @@
-package client.controller;
+package urn.client.controller;
 
-import client.model.Candidate;
-import client.util.Network;
-import client.view.ConfirmBox;
+import urn.client.model.Candidate;
+import urn.client.util.Network;
+import urn.client.view.ConfirmBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -21,8 +21,8 @@ public class Server {
         Integer whiteVotes = 0;
 
         Gson gson = new Gson();
-        FileReader fr = new FileReader(new File(Server.class.getResource("/candidates.json").toURI()));
-        candidates = gson.fromJson(fr, new TypeToken<List<Candidate>>() {}.getType());
+        InputStreamReader ir = new InputStreamReader(Server.class.getResourceAsStream("/candidates.json"));
+        candidates = gson.fromJson(ir, new TypeToken<List<Candidate>>() {}.getType());
         Collections.sort(candidates, (o1, o2) -> o1.getName().compareTo(o2.getName()));
 
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) {

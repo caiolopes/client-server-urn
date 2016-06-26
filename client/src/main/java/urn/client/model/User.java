@@ -1,4 +1,4 @@
-package client.model;
+package urn.client.model;
 
 public class User {
     private String name;

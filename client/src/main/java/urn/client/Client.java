@@ -1,7 +1,7 @@
-package client;
+package urn.client;
 
-import client.controller.MainController;
-import client.view.ConfirmBox;
+import urn.client.controller.MainController;
+import urn.client.view.ConfirmBox;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

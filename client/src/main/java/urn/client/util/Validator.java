@@ -1,4 +1,4 @@
-package client.util;
+package urn.client.util;
 
 public class Validator {
     private static final int[] cpfWeight = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
