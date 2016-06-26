@@ -21,13 +21,13 @@ public class ConfirmBox {
         Label label = new Label();
         label.setText(message);
 
-        Button confirmBtn = new Button("Confirma");
+        Button confirmBtn = new Button("Sim");
         confirmBtn.setOnAction(e -> {
             answer = true;
             window.close();
         });
 
-        Button cancelBtn = new Button("Cancelar");
+        Button cancelBtn = new Button("Não");
         cancelBtn.setOnAction(e -> {
             answer = false;
             window.close();

@@ -1,10 +1,14 @@
 package client.controller;
 
+import client.model.Candidate;
+import client.util.Network;
 import client.view.ConfirmBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+
+import java.util.List;
 
 public class MainController {
     public static final String TITLE = "Urna - Tela Principal";
@@ -14,6 +18,8 @@ public class MainController {
     public Button whiteBtn;
     @FXML private ListView<String> listView;
     @FXML private Button confirmBtn;
+    Network network = new Network();
+    private List<Candidate> candidates;
 
     public void initialize() {
         listView.getSelectionModel().selectedItemProperty().addListener(e -> {
@@ -30,9 +36,10 @@ public class MainController {
 
     public void loadCandidates(ActionEvent event) {
         listView.getItems().removeAll();
-        listView.getItems().addAll("PP - Waldir Maranhão - 232", "PRB - Beto Mansur - 221", "PSDB - Mara Gabrilli - 532"
-        ,"PP - Waldir Maranhão - 232", "PRB - Beto Mansur - 221", "PSDB - Mara Gabrilli - 532"
-        ,"PP - Waldir Maranhão - 232", "PRB - Beto Mansur - 221", "PSDB - Mara Gabrilli - 532");
+        candidates = network.getCandidatesList();
+        for (Candidate candidate : candidates) {
+            listView.getItems().add(candidate.getPoliticalParty() + " - " + candidate.getName() + " - " + candidate.getCode());
+        }
         whiteBtn.setDisable(false);
         nullBtn.setDisable(false);
     }
