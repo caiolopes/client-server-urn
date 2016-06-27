@@ -14,11 +14,12 @@ import java.util.List;
 
 public class Server {
     public static List<Candidate> candidates;
+    public static Integer nullVotes = 0;
+    public static Integer whiteVotes = 0;
+
     public static void main(String[] args) throws IOException, URISyntaxException {
-        Integer portNumber = 4444;
+        Integer portNumber = 40108;
         candidates = new ArrayList<>();
-        Integer nullVotes = 0;
-        Integer whiteVotes = 0;
 
         Gson gson = new Gson();
         InputStreamReader ir = new InputStreamReader(Server.class.getResourceAsStream("/candidates.json"));
@@ -26,6 +27,7 @@ public class Server {
         Collections.sort(candidates, (o1, o2) -> o1.getName().compareTo(o2.getName()));
 
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
+            System.out.println("Ouvindo por novos clientes na porta 40108");
             while (true) {
                 Socket socket = serverSocket.accept();
                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -34,15 +36,11 @@ public class Server {
                     int code = Integer.parseInt(in.readLine());
 
                     if (code == 999) {
-                        System.out.println("999");
+                        System.out.println("999 - Criando Thread para enviar cadidatos para a urna cliente");
                         new CandidatesThread(socket).start();
                     } else if (code == 888) {
-                        System.out.println("888");
-                        whiteVotes += Integer.parseInt(in.readLine());
-                        nullVotes += Integer.parseInt(in.readLine());
-                        System.out.println("Votos em branco: " + whiteVotes);
-                        System.out.println("Votos em nulo: " + nullVotes);
-                        new VotingThread(socket).start();
+                        System.out.println("888 - Criando Thread para receber resultados de uma urna cliente");
+                        new VotingThread(socket, in).start();
                     } else {
                         socket.close();
                     }

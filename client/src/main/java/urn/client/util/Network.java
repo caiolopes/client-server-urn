@@ -15,12 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Network {
+    private static final String HOST = Config.HOST_PRODUCTION;
 
     public List<Candidate> getCandidatesList() {
         List<Candidate> candidates = new ArrayList<>();
 
         try {
-            Socket urnSocket = new Socket(Config.HOST, Config.PORT);
+            Socket urnSocket = new Socket(HOST, Config.PORT);
             PrintWriter out = new PrintWriter(urnSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(urnSocket.getInputStream()));
 
@@ -42,10 +43,9 @@ public class Network {
 
     public List<Candidate> sendVotes(List<Candidate> candidates, Integer nullVotes, Integer whiteVotes) {
         try {
-            Socket urnSocket = new Socket(Config.HOST, Config.PORT);
+            Socket urnSocket = new Socket(HOST, Config.PORT);
             PrintWriter out = new PrintWriter(urnSocket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(urnSocket.getInputStream()));
-
+            //BufferedReader in = new BufferedReader(new InputStreamReader(urnSocket.getInputStream()));
             out.println(888);
             out.flush();
             out.println(nullVotes);

@@ -64,6 +64,7 @@ public class MainController {
             candidates = network.getCandidatesList();
             Collections.sort(candidates, (o1, o2) -> o1.getName().compareTo(o2.getName()));
             for (Candidate candidate : candidates) {
+                candidate.setVotes(0);
                 listView.getItems().add(candidate.getPoliticalParty() + " - " + candidate.getName() + " - " + candidate.getCode());
             }
             whiteBtn.setDisable(false);
@@ -73,15 +74,17 @@ public class MainController {
 
     public void sendAndFinish(ActionEvent event) {
         loadBtn.setDisable(false);
-        sendBtn.setDisable(false);
         listView.getItems().clear();
         System.out.println("888");
         network.sendVotes(candidates, nullVotes, whiteVotes);
         votes = 0;
+        whiteVotes = 0;
+        nullVotes = 0;
         confirmBtn.setText("Confirma");
         confirmBtn.setDisable(true);
         whiteBtn.setDisable(true);
         nullBtn.setDisable(true);
+        sendBtn.setDisable(true);
         candidates.clear();
     }
 
