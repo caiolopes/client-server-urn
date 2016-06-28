@@ -24,7 +24,7 @@ public class CandidatesThread extends Thread {
     }
 
     private String getCandidates() {
-        Scanner s = new java.util.Scanner(Server.class.getResourceAsStream("/candidates.json")).useDelimiter("\\A");
+        Scanner s = new Scanner(Server.class.getResourceAsStream("/candidates.json")).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
 }

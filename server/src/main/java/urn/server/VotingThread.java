@@ -13,11 +13,20 @@ import static urn.server.Server.candidates;
 import static urn.server.Server.nullVotes;
 import static urn.server.Server.whiteVotes;
 
-public class VotingThread extends Thread {
+/**
+ * The class Voting thread.
+ */
+class VotingThread extends Thread {
     private Socket socket = null;
     private BufferedReader in;
 
-    public VotingThread(Socket socket, BufferedReader in) {
+    /**
+     * Instantiates a new Voting thread.
+     *
+     * @param socket the socket
+     * @param in     the in
+     */
+    VotingThread(Socket socket, BufferedReader in) {
         super("VotingThread");
         this.socket = socket;
         this.in = in;

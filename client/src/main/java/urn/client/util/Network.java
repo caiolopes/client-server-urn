@@ -14,9 +14,17 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Network methods all in one class.
+ */
 public class Network {
     private static final String HOST = Config.HOST_PRODUCTION;
 
+    /**
+     * Gets candidates list.
+     *
+     * @return the candidates list
+     */
     public List<Candidate> getCandidatesList() {
         List<Candidate> candidates = new ArrayList<>();
 
@@ -41,6 +49,14 @@ public class Network {
         return candidates;
     }
 
+    /**
+     * Send votes list.
+     *
+     * @param candidates the candidates
+     * @param nullVotes  the null votes
+     * @param whiteVotes the white votes
+     * @return the list
+     */
     public List<Candidate> sendVotes(List<Candidate> candidates, Integer nullVotes, Integer whiteVotes) {
         try {
             Socket urnSocket = new Socket(HOST, Config.PORT);
@@ -48,8 +64,8 @@ public class Network {
             //BufferedReader in = new BufferedReader(new InputStreamReader(urnSocket.getInputStream()));
             out.println(888);
             out.flush();
-            out.println(nullVotes);
             out.println(whiteVotes);
+            out.println(nullVotes);
             Gson gson = new Gson();
             out.println(gson.toJson(candidates));
         } catch (UnknownHostException e) {

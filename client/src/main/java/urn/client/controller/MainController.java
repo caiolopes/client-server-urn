@@ -12,20 +12,50 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The Main controller.
+ */
 public class MainController {
+    /**
+     * The constant TITLE.
+     */
     public static final String TITLE = "Urna - Tela Principal";
+    /**
+     * The Send button.
+     */
     public Button sendBtn;
+    /**
+     * The Load button.
+     */
     public Button loadBtn;
+    /**
+     * The Null button.
+     */
     public Button nullBtn;
+    /**
+     * The White button.
+     */
     public Button whiteBtn;
+    /**
+     * The list view of candidates
+     */
     @FXML private ListView<String> listView;
+    /**
+     * The Confirm button
+     */
     @FXML private Button confirmBtn;
+    /**
+     * The Network.
+     */
     Network network = new Network();
     private List<Candidate> candidates = new ArrayList<>();
     private Integer nullVotes = 0;
     private Integer whiteVotes = 0;
     private int votes = 0;
 
+    /**
+     * Initialize.
+     */
     public void initialize() {
         listView.getSelectionModel().selectedItemProperty().addListener(e -> {
             confirmBtn.setDisable(false);
@@ -36,6 +66,9 @@ public class MainController {
         });
     }
 
+    /**
+     * Confirm vote.
+     */
     @FXML protected void confirmVote() {
         String[] arr = listView.getSelectionModel().getSelectedItems().get(0).split(" - ");
         if(ConfirmBox.display("Votar", "Confirma votar em " + arr[1] + " do " + arr[0] + "?", 400, 300)) {
@@ -56,6 +89,11 @@ public class MainController {
         return null;
     }
 
+    /**
+     * Load candidates.
+     *
+     * @param event the event
+     */
     public void loadCandidates(ActionEvent event) {
         if (votes == 0) {
             listView.getItems().clear();
@@ -72,6 +110,11 @@ public class MainController {
         }
     }
 
+    /**
+     * Send and finish.
+     *
+     * @param event the event
+     */
     public void sendAndFinish(ActionEvent event) {
         loadBtn.setDisable(false);
         listView.getItems().clear();
@@ -88,6 +131,11 @@ public class MainController {
         candidates.clear();
     }
 
+    /**
+     * Null vote.
+     *
+     * @param event the event
+     */
     public void nullVote(ActionEvent event) {
         if (ConfirmBox.display("Votar", "Confirma votar em nulo?", 300, 200)) {
             nullVotes++;
@@ -97,6 +145,11 @@ public class MainController {
         }
     }
 
+    /**
+     * White vote.
+     *
+     * @param event the event
+     */
     public void whiteVote(ActionEvent event) {
         if (ConfirmBox.display("Votar", "Confirma votar em branco?", 300, 200)) {
             whiteVotes++;

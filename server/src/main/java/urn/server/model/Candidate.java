@@ -23,8 +23,9 @@ public class Candidate {
 
     /**
      * Cria um novo candidato a partir de um código, nome e partido.
-     * @param code código de votação
-     * @param name nome do candidato
+     *
+     * @param code           código de votação
+     * @param name           nome do candidato
      * @param politicalParty nome do partido político
      */
     public Candidate(Integer code, String name, String politicalParty) {
@@ -35,6 +36,8 @@ public class Candidate {
     }
 
     /**
+     * Gets code.
+     *
      * @return código de votação
      */
     public Integer getCode() {
@@ -42,6 +45,8 @@ public class Candidate {
     }
 
     /**
+     * Sets code.
+     *
      * @param code código do candidato
      */
     public void setCode(Integer code) {
@@ -49,6 +54,8 @@ public class Candidate {
     }
 
     /**
+     * Gets name.
+     *
      * @return nome do candidato
      */
     public String getName() {
@@ -56,6 +63,8 @@ public class Candidate {
     }
 
     /**
+     * Sets name.
+     *
      * @param name nome do candidato
      */
     public void setName(String name) {
@@ -63,6 +72,8 @@ public class Candidate {
     }
 
     /**
+     * Gets political party.
+     *
      * @return nome do partido político
      */
     public String getPoliticalParty() {
@@ -70,6 +81,8 @@ public class Candidate {
     }
 
     /**
+     * Sets political party.
+     *
      * @param politicalParty nome do partido político do candidato
      */
     public void setPoliticalParty(String politicalParty) {
@@ -77,13 +90,17 @@ public class Candidate {
     }
 
     /**
-     * @return Integer
+     * Gets votes.
+     *
+     * @return Integer votes
      */
     public Integer getVotes() {
         return votes;
     }
 
     /**
+     * Sets votes.
+     *
      * @param votes votos do candidato
      */
     public void setVotes(Integer votes) {

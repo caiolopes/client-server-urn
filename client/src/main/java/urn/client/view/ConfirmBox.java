@@ -9,9 +9,24 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The Confirm box.
+ */
 public class ConfirmBox {
-    static boolean answer = true;
+    /**
+     * The Answer.
+     */
+    private static boolean answer = true;
 
+    /**
+     * Display the confirm box
+     *
+     * @param title   the title
+     * @param message the message
+     * @param width   the width
+     * @param height  the height
+     * @return the result if the user answered yes or no
+     */
     public static boolean display(String title, String message, double width, double height) {
         Stage window = new Stage();
 

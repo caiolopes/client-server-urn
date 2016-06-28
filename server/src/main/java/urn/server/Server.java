@@ -12,11 +12,30 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The class Server.
+ */
 public class Server {
-    public static List<Candidate> candidates;
-    public static Integer nullVotes = 0;
-    public static Integer whiteVotes = 0;
+    /**
+     * The Candidates.
+     */
+    static List<Candidate> candidates;
+    /**
+     * The constant nullVotes.
+     */
+    static Integer nullVotes = 0;
+    /**
+     * The constant whiteVotes.
+     */
+    static Integer whiteVotes = 0;
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws IOException        the io exception
+     * @throws URISyntaxException the uri syntax exception
+     */
     public static void main(String[] args) throws IOException, URISyntaxException {
         Integer portNumber = 40108;
         candidates = new ArrayList<>();
